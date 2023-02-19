@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/user-registration.css' %}">
+    <title>Educational portal</title>
+</head>
+<body>
+
+{% csrf_token %}
+<form name="registration-form" id="user-registration-form" method="post">
+    {% for field in form %}
+        <div class="form-field">
+            {{ field }}
+        </div>
+    {% endfor %}
+</form>
+</body>
+</html>
