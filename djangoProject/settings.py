@@ -51,7 +51,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+AUTH_USER_MODEL = "djangoProject.User"
+
 ROOT_URLCONF = 'djangoProject.urls'
+
+# TODO define these vars when production
+LOGIN_REDIRECT_URL = ''
+LOGOUT_REDIRECT_URL = ''
 
 TEMPLATES = [
     {

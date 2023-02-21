@@ -10,7 +10,6 @@ class User(AbstractUser):
     username = CharField(
         max_length=50,
         unique=True,
-        default=f'user{randint(10000,100000)}',
         null=False,
         help_text='This is your username',
     )

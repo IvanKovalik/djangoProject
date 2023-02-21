@@ -11,13 +11,19 @@
 </head>
 <body>
 
-{% csrf_token %}
 <form name="registration-form" id="user-registration-form" method="post">
+    {% csrf_token %}
     {% for field in form %}
         <div class="form-field">
+            <label for="user-registration-form">{{ field.label }}</label>
+            <br>
             {{ field }}
         </div>
     {% endfor %}
+    <button type="submit" id="user-registration-btn">
+        Register
+    </button>
 </form>
+
 </body>
 </html>
