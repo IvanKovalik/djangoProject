@@ -6,7 +6,6 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
 
 
-@login_required()
 def index_page_view(request):
     context = {}
     return render(request, 'index.html', context=context)
