@@ -44,7 +44,7 @@ def registration_page_view(request):
     if request.method == 'POST':
         registration_form = CustomUserCreationForm(request.POST)
         if registration_form.is_valid():
-            user = registration_form.save(commit=False)
+            user = registration_form.save(commit=True)
             user.username = user.username.lower()
             user.save()
             login(request, user)

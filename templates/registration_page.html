@@ -11,19 +11,27 @@
 </head>
 <body>
 
-<form name="registration-form" id="user-registration-form" method="post">
-    {% csrf_token %}
-    {% for field in form %}
-        <div class="form-field">
-            <label for="user-registration-form">{{ field.label }}</label>
-            <br>
-            {{ field }}
-        </div>
+{% block content %}
+<form method="POST" novalidate>
+	{% csrf_token %}
+	<h2>Sign Up</h2>
+
+	{% for field in form %}
+		{% if field.errors %}
+		<ol class="errorlist">
+			{% for error in field.errors %}
+			<li>{{ error }}</li>
+			{% endfor %}
+		</ol>
+		{% endif %}
+	 	{{ field.label_tag }}
+        <br>
+        {{ field }}
+        <br>
     {% endfor %}
-    <button type="submit" id="user-registration-btn">
-        Register
-    </button>
+	<input type="submit" value="Register" />
 </form>
+{% endblock content%}
 
 </body>
 </html>
