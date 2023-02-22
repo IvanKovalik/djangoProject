@@ -7,14 +7,14 @@ from django.contrib.auth.decorators import login_required
 
 
 def index_page_view(request):
-    context = {}
+    context = {'user': user}
     return render(request, 'index.html', context=context)
 
 
 def login_page_view(request):
     if request.user.is_authenticated:
         warning(request, 'You are already authenticated')
-        redirect('main_page')
+        return redirect('main_page')
 
     if request.method == 'POST':
         login_form = UserLoginForm(request, data=request.POST)
@@ -31,9 +31,8 @@ def login_page_view(request):
                 return render(request, 'login_page.html', context=context)
             else:
                 error(request, 'user not found')
-    else:
-        error(request, 'form must get POST method')
-
+                context = {'form': login_form}
+                return render(request, 'login_page.html', context=context)
 
 def registration_page_view(request):
     if request.method == 'GET':

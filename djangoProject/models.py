@@ -1,8 +1,8 @@
 import uuid
-from random import randint
 
 from django.contrib.auth.models import AbstractUser
-from django.db.models import CharField, DateField, UUIDField, EmailField, BooleanField
+from django.db.models import Model, CASCADE
+from django.db.models import CharField, DateField, UUIDField, EmailField, BooleanField, ForeignKey, TextField
 from django.utils.timezone import now
 
 
@@ -30,3 +30,36 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.username
+
+
+class Post(Model):
+    to_who = CharField(
+        max_length=50,
+        choices=[
+            ('to all', 'to all'),
+            ('to friends', 'to friends'),
+            ('to me', 'to me'),
+        ]
+    )
+    date_created = DateField(
+        default=now()
+    )
+    date_updated = DateField(
+        auto_now=True
+    )
+
+
+class Message(Model):
+    to_who = ForeignKey(User, CASCADE)
+    date_created = DateField(
+        default=now()
+    )
+    date_updated = DateField(
+        auto_now=True
+    )
+    body = TextField(
+        max_length=1000,
+        null=False,
+        help_text='This is your message',
+    )
+    from_who = ForeignKey(User, CASCADE)
