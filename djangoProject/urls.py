@@ -24,4 +24,9 @@ urlpatterns = [
     path('register/', views.registration_page_view, name='registration_page'),
     path('login/', views.login_page_view, name='login_page'),
 
+    path('messages/', views.MessagesView.as_view(), name='messages'),
+    path('friends/', views.FriendsView.as_view(), name='friends'),
+    path('groups/', views.GroupsView.as_view(), name='groups'),
+    path('profile/', views.ProfileView.as_view(), name='profile'),
+
 ]

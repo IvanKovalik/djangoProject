@@ -19,3 +19,9 @@
     font-size: 25px;
     margin: 25px;
 }
+
+.main {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr 10%;
+}

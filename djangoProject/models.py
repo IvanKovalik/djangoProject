@@ -32,23 +32,6 @@ class User(AbstractUser):
         return self.username
 
 
-class Post(Model):
-    to_who = CharField(
-        max_length=50,
-        choices=[
-            ('to all', 'to all'),
-            ('to friends', 'to friends'),
-            ('to me', 'to me'),
-        ]
-    )
-    date_created = DateField(
-        default=now()
-    )
-    date_updated = DateField(
-        auto_now=True
-    )
-
-
 class Message(Model):
     to_who = ForeignKey(User, CASCADE)
     date_created = DateField(
@@ -62,4 +45,6 @@ class Message(Model):
         null=False,
         help_text='This is your message',
     )
-    from_who = ForeignKey(User, CASCADE)
+
+    def __str__(self):
+        return self.body[:50]

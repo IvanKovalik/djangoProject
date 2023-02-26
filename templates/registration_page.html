@@ -10,28 +10,34 @@
     <title>Educational portal</title>
 </head>
 <body>
+    <div class="main">
+        <div class="empty-place">
+{#            <img class="logo" src="">#}
+            <p class="webapp-name">Webapp name</p>
+        </div>
+        <div class="content">
+            {% block content %}
+                <form class="register-form" method="POST" novalidate>
+	                {% csrf_token %}
+                    <h2>Sign Up</h2>
 
-{% block content %}
-<form method="POST" novalidate>
-	{% csrf_token %}
-	<h2>Sign Up</h2>
-
-	{% for field in form %}
-		{% if field.errors %}
-		<ol class="errorlist">
-			{% for error in field.errors %}
-			<li>{{ error }}</li>
-			{% endfor %}
-		</ol>
-		{% endif %}
-	 	{{ field.label_tag }}
-        <br>
-        {{ field }}
-        <br>
-    {% endfor %}
-	<input type="submit" value="Register" />
-</form>
-{% endblock content%}
-
+	                {% for field in form %}
+		                {% if field.errors %}
+		                    <ul class="errorlist">
+			                {% for error in field.errors %}
+			                    <li>{{ error }}</li>
+			                {% endfor %}
+		                    </ul>
+		                {% endif %}
+	 	                {{ field.label_tag }}
+                        <br>
+                        {{ field }}
+                        <br>
+                    {% endfor %}
+	                <input type="submit" value="Register" />
+                </form>
+            {% endblock content%}
+        </div>
+    </div>
 </body>
 </html>
