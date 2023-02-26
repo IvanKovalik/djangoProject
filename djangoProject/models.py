@@ -31,20 +31,3 @@ class User(AbstractUser):
     def __str__(self):
         return self.username
 
-
-class Message(Model):
-    to_who = ForeignKey(User, CASCADE)
-    date_created = DateField(
-        default=now()
-    )
-    date_updated = DateField(
-        auto_now=True
-    )
-    body = TextField(
-        max_length=1000,
-        null=False,
-        help_text='This is your message',
-    )
-
-    def __str__(self):
-        return self.body[:50]

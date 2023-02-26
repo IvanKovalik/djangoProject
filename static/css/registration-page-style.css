@@ -1,0 +1,88 @@
+.wrapper {
+    margin-top: 40px;
+}
+
+div {
+    display: block;
+}
+
+body {
+    font-family: "Times New Roman", serif;
+    font-size: 18px;
+    color: #000;
+}
+
+.container-large, .container-register-card {
+    width: 450px;
+    margin: 0 auto;
+}
+
+.container-register-card {
+    box-sizing: border-box;
+    background: whitesmoke;
+    border-radius: 16px;
+    padding: 34px 40px 0;
+}
+
+header {
+    display: block;
+}
+
+.register-header {
+    text-align: center;
+    margin: 0 0 16px;
+}
+
+.span-logo {
+    display: inline-block;
+    position: relative;
+    margin-right: -4px;
+    text-align: center;
+}
+
+.div-enter-to-kontur {
+    margin-top: 5px;
+    font-size: 16px;
+    color: #414040;
+    text-align: center;
+}
+
+form {
+    display: block;
+    margin-top: 0;
+}
+
+.register-form {
+    padding: 32px 0 46px;
+}
+
+a {
+    text-decoration-line: none;
+}
+
+.div-email-form, .div-username-form, .div-password-form {
+    margin-bottom: 24px;
+}
+
+.label-email-form, .label-password-form {
+    margin-bottom: 8px;
+    color: #222;
+    display: block;
+}
+
+.ui-span-1 {
+    box-sizing: border-box;
+    display: inline-block;
+    line-height: normal;
+    padding: 15px;
+    height: 48px;
+    margin-top: 10px;
+
+    width: 200px;
+}
+
+
+
+
+
+
