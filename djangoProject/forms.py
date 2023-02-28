@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.forms import Form
-from djangoProject.models import User
+from djangoProject.models import User, Message
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -15,3 +15,7 @@ class UserLoginForm(AuthenticationForm):
         fields = ['email', 'password']
 
 
+class MessageForm(Form):
+    class Meta:
+        model = Message
+        fields = ['body']

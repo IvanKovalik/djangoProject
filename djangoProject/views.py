@@ -35,12 +35,29 @@ def registration_page_view(request):
 
 
 class CustomLoginView(LoginView):
-    redirect_authenticated_user = True
+    # TODO Must be True
+    redirect_authenticated_user = False
+
     # authentication_form =
     template_name = 'login_page.html'
 
-    def get_success_url(self):
-        return redirect('main_page')
+    def get(self, request, **kwargs):
+        login_form = UserLoginForm()
+        context = {'form': login_form}
+        return render(request, 'login_page.html', context=context)
+
+    def post(self, request, *args, **kwargs):
+        login_form = UserLoginForm(request.POST)
+        if login_form.is_valid():
+            user = login_form.get_user()
+            authenticate(user.email, user.password)
+            if user is not None:
+                login(request, user)
+                success(request, 'login succeed')
+                redirect('main_page')
+            else:
+                context = {'form': login_form}
+                return render(request, 'login_page.html', context=context)
 
     def form_invalid(self, form):
         error(self.request, 'Login form is invalid')
@@ -53,3 +70,4 @@ class CustomLogoutView(LogoutView):
 
 class CustomPasswordResetView(PasswordResetView):
     pass
+
